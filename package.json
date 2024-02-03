@@ -4,17 +4,36 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron main.js",
-    "debug": "NODE_ENV=development electron main.js",
+    "start": "electron src/main.js",
+    "debug": "NODE_ENV=development electron src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder"
+    "build": "rm -R dist/* && electron-builder"
+  },
+  "build": {
+    "appId": "com.burningstack.hashcode_validator",
+    "productName": "Hashcode Validator",
+    "mac": {
+      "category": "com.burningstack.hashcode_validator",
+      "icon": "src/assets/images/favicon-512x512.icns"
+    },
+    "win": {
+      "icon": "src/assets/images/favicon.ico",
+      "target": [
+        {
+          "target": "msi",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "src/assets/images/favicon-512x512.png"
+    }
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "electron-alert": "^0.1.20"
-  },
+  "author": "Philip Densborn",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^28.2.1",
     "electron-builder": "^24.9.1"

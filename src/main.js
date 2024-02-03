@@ -27,7 +27,7 @@ function createWindow() {
         });
     }
     
-    win.loadFile('src/index.html');
+    win.loadFile(path.join(__dirname, '/index.html'));
     if (isDev) {
         win.webContents.openDevTools();
     }
@@ -37,24 +37,39 @@ function createWindow() {
         if (arg == "SUCCESS") {
             dialog.showMessageBox(win, {
                 title: "Validation successful",
-                message: "Text fields match!",
+                message: "Hash values do match!",
                 icon: path.join(__dirname, 'assets/images/ok.png'),
                 buttons: ["OK"],
             });
         } else {
             dialog.showMessageBox(win, {
                 title: "Validation failed",
-                message: "Text fields do not match!",
+                message: "Hash values do not match!",
                 icon: path.join(__dirname, 'assets/images/error.png'),
                 buttons: ["OK"],
             });
         }
     });
 }
+
+// Create the Application's main menu
+let template = [{
+    label: "Application",
+    submenu: [
+        { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+    ]}, {
+    label: "Edit",
+    submenu: [
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+    ]}
+];
     
 
 // Remove the menu bar options
-Menu.setApplicationMenu(null);
+Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
 app.whenReady().then(createWindow);
 
