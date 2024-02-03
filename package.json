@@ -7,7 +7,7 @@
     "start": "electron src/main.js",
     "debug": "NODE_ENV=development electron src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -R dist/* && electron-builder"
+    "build": "rm -rf dist/* && electron-builder"
   },
   "build": {
     "appId": "com.burningstack.hashcode_validator",
@@ -17,8 +17,14 @@
       "icon": "src/assets/images/favicon-512x512.icns"
     },
     "win": {
-      "icon": "src/assets/images/favicon.ico",
+      "icon": "src/assets/images/favicon-512x512.png",
       "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
         {
           "target": "msi",
           "arch": [

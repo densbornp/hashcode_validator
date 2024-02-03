@@ -7,7 +7,7 @@ function createWindow() {
     if (isDev) {
         win = new BrowserWindow({
             width: 400,
-            height: 550,
+            height: 575,
             icon: path.join(__dirname, 'assets/images/favicon-32x32.png'),
             webPreferences: {
                 nodeIntegration: true,
@@ -17,7 +17,7 @@ function createWindow() {
     } else {
         win = new BrowserWindow({
             width: 400,
-            height: 550,
+            height: 575,
             resizable: false,
             icon: path.join(__dirname, 'assets/images/favicon-32x32.png'),
             webPreferences: {
