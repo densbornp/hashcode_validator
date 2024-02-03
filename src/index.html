@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashcode Validator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="dropdown-container">
+        <label for="hash-algorithm-select">Select Hash Algorithm:</label>
+        <select id="hash-algorithm-select" onchange="updateHashAlgorithm()">
+            <option selected value="sha256">SHA-256</option>
+            <option value="sha512">SHA-512</option>
+            <option value="md5">MD5</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+    <div id="drop-area" onclick="openFileSelector()">
+        <p id="info-text">Click here or Drag & Drop a file</p>
+    </div>
+    <div class="text-field-container">
+        <label class="label" for="editable-textfield">Original Hashcode</label>
+        <div>
+            <input type="text" id="editable-textfield" placeholder="Paste original Hashcode">
+        </div>
+        <label class="label" for="editable-textfield">Generierter Hashcode</label>
+        <div>
+            <input type="text" id="hashcode-textfield" readonly>
+        </div>
+    </div>
+    <div class="button-container">
+        <button class="action-button" id="compare-button" onclick="compareTextFields()">Compare</button>
+        <button class="action-button" id="copy-button" onclick="copyToClipboard()">Copy</button>
+        <button class="action-button" id="clear-button" onclick="clearTextField()">Clear</button>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
